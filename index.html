@@ -236,6 +236,14 @@ input[type=range]{width:100%}
 <script src="assets/images-1.js"></script>
 <script src="assets/images-2.js"></script>
 <script src="assets/images-3.js"></script>
+<script src="assets/audio-restaurant.js"></script>
+<script src="assets/audio-auto.js"></script>
+<script src="assets/audio-home.js"></script>
+<script src="assets/audio-clinic.js"></script>
+<script src="assets/audio-retail.js"></script>
+<script src="assets/audio-salon.js"></script>
+<script src="assets/audio-realestate.js"></script>
+<script src="assets/audio-pro.js"></script>
 <script>window.__img=function(p){return (window.SONIVOICE_IMAGES&&window.SONIVOICE_IMAGES[p])||p;};</script>
 <script>
 var scenarios={
@@ -272,7 +280,13 @@ function playDemo(){
   var steps=[400,1100,1800,2500]; steps.forEach(function(t,i){timer=setTimeout(function(){setRing(i); if(i===3){renderChat(current)}},t);});
 }
 
+var callAudio=null;
+function stopCallAudio(){if(callAudio){try{callAudio.pause();}catch(e){}callAudio=null;}if('speechSynthesis' in window){try{speechSynthesis.cancel();}catch(e){}}}
 function replayCallAudio(){
+  stopCallAudio();
+  var key=current||'restaurant';
+  var uri=(window.SONIVOICE_AUDIO&&window.SONIVOICE_AUDIO[key])||null;
+  if(uri){callAudio=new Audio(uri);try{var pr=callAudio.play();if(pr&&pr.catch){pr.catch(function(){});}}catch(e){}return;}
   if(!('speechSynthesis' in window)){return;}
   speechSynthesis.cancel();
   var s=scenarios[current]||scenarios.restaurant;
@@ -289,7 +303,7 @@ function replayCallAudio(){
 }
 if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=function(){};}
 function selectScenario(key,el){
-  if('speechSynthesis' in window){try{speechSynthesis.cancel();}catch(e){}}
+  stopCallAudio();
   current=key;
   document.querySelectorAll('#scenarioBtns .chip').forEach(function(c){c.classList.remove('active')});
   if(el) el.classList.add('active');
