@@ -117,7 +117,7 @@ input[type=range]{width:100%}
 </div></header>
 
 <section class="hero" style="padding:0">
-<img class="hero-bg" src="assets/img-1.webp" alt="Abstract glowing voice waves representing AI phone answering"/>
+<img class="hero-bg" id="heroImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Abstract glowing voice waves representing AI phone answering"/>
 <div class="hero-overlay"></div>
 <div class="wrap hero-in">
 <div>
@@ -185,7 +185,7 @@ input[type=range]{width:100%}
 <div class="industries" id="indGrid"></div>
 <div class="demo-box" id="demoBox">
 <img id="demoImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Busy restaurant during service"/>
-<div class="demo-content"><div class="badge" id="demoBadge">EXAMPLE • RESTAURANT</div><h3 id="demoTitle" style="margin:10px 0 8px">Takes the order, by name.</h3><p id="demoDesc">During the dinner rush, nobody can reach the phone. SoniVoice answers, takes the full order, repeats it back, confirms pickup time — and sends it straight to you.</p><div class="convo" id="demoConvo"></div><div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><a href="#cta" class="btn btn-cyan">Train it for my business →</a><span style="align-self:center;color:#8EA6C2;font-size:13px">Setup done for you • No app to learn</span></div></div>
+<div class="demo-content"><div class="badge" id="demoBadge">EXAMPLE • RESTAURANT</div><h3 id="demoTitle" style="margin:10px 0 8px">Takes the order, by name.</h3><p id="demoDesc">During the dinner rush, nobody can reach the phone. SoniVoice answers, takes the full order, repeats it back, confirms pickup time — and sends it straight to you.</p><div class="convo" id="demoConvo"></div><div style="margin-top:12px"><button class="btn btn-cyan" onclick="replayCallAudio()">&#128266; Listen to this call</button></div><div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><a href="#cta" class="btn btn-cyan">Train it for my business →</a><span style="align-self:center;color:#8EA6C2;font-size:13px">Setup done for you • No app to learn</span></div></div>
 </div>
 <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:16px">+ Law firms, contractors, pet services, fitness studios, hotels, e-commerce support, and more. <b style="color:var(--text)">If they call, we answer.</b></p>
 </div></section>
@@ -242,7 +242,12 @@ var scenarios={
 restaurant:{badge:"EXAMPLE • RESTAURANT",title:"Takes the order, by name.",img:__img("assets/img-2.webp"),alt:"Busy restaurant during dinner service",desc:"During the dinner rush, nobody can reach the phone. SoniVoice answers, takes the full order, repeats it back, confirms pickup time — and sends it straight to you.",chat:[["ai","SoniVoice AI","Thanks for calling Bella's! We're on the line with guests — I can take your order right now. What name is it under?"],["user","Caller","Maria Garcia."],["ai","SoniVoice AI","Hi Maria! What can we get started for you?"],["user","Caller","Large pepperoni, garlic knots, pickup please."],["ai","SoniVoice AI","Got it — large pepperoni + garlic knots for Maria, pickup in ~25 min. I've taken your order and I'm sending the full details to the team now by email with this recording. Anything else?"]]},
 auto:{badge:"EXAMPLE • AUTO DEALER",title:"Qualifies the lead like a human.",img:__img("assets/img-3.webp"),alt:"Modern automotive dealership showroom",desc:"A buyer calls after hours about a car. SoniVoice captures the vehicle, budget, trade-in, and callback window — and emails your sales team a ready-to-work lead with the recording.",chat:[["ai","SoniVoice AI","Thanks for calling City Auto! The showroom's closed, but I can help. Are you calling about a vehicle, service, or parts?"],["user","Caller","Vehicle — the silver SUV online."],["ai","SoniVoice AI","Great pick. Can I get your name and best number? Then I'll note your budget and if you have a trade-in."],["user","Caller","James Lee, looking around $28k, have a trade-in."],["ai","SoniVoice AI","Perfect, James. I sent your details to sales — they'll call tomorrow by 10am. I also texted you a confirmation."]]},
 home:{badge:"EXAMPLE • HOME SERVICES",title:"Books the job, sends the confirmation.",img:__img("assets/img-1.webp"),alt:"AI voice technology for home service businesses",desc:"HVAC, plumbing, electrical, cleaning — when you're on a job, SoniVoice answers, asks what's wrong, offers the next slot, books it, and texts the customer a confirmation.",chat:[["ai","SoniVoice AI","Thanks for calling ProFlow! We're out on a job — I can book you right now. What's going on?"],["user","Caller","No AC, it's blowing warm air."],["ai","SoniVoice AI","Sorry to hear that. I have tomorrow 9–11am or 1–3pm. Which works? And what's the address?"],["user","Caller","9–11 works. 412 Oak Street."],["ai","SoniVoice AI","Booked — tomorrow 9–11am at 412 Oak St. I texted you a confirmation. We'll email the shop your details + this recording."]]},
-clinic:{badge:"EXAMPLE • CLINIC / HEALTHCARE",title:"Collects intake, books the visit.",img:__img("assets/img-1.webp"),alt:"AI voice technology for clinics",desc:"Front desk overwhelmed? SoniVoice collects name, reason for visit, insurance basics, and preferred time — then sends a clean intake summary to your team.",chat:[["ai","SoniVoice AI","Thanks for calling BrightCare Clinic! I can help book your visit. What's your name?"],["user","Caller","Priya Patel, need a check-up this week."],["ai","SoniVoice AI","Hi Priya, I have Thursday 10:30am or Friday 2pm. Do either work?"],["user","Caller","Thursday works."],["ai","SoniVoice AI","You're booked for Thursday 10:30am. I sent the clinic your intake details and texted you a confirmation."]]}
+clinic:{badge:"EXAMPLE • CLINIC / HEALTHCARE",title:"Collects intake, books the visit.",img:__img("assets/img-1.webp"),alt:"AI voice technology for clinics",desc:"Front desk overwhelmed? SoniVoice collects name, reason for visit, insurance basics, and preferred time — then sends a clean intake summary to your team.",chat:[["ai","SoniVoice AI","Thanks for calling BrightCare Clinic! I can help book your visit. What's your name?"],["user","Caller","Priya Patel, need a check-up this week."],["ai","SoniVoice AI","Hi Priya, I have Thursday 10:30am or Friday 2pm. Do either work?"],["user","Caller","Thursday works."],["ai","SoniVoice AI","You're booked for Thursday 10:30am. I sent the clinic your intake details and texted you a confirmation."]]},
+retail:{badge:"EXAMPLE • RETAIL",title:"Answers questions, captures the lead.",img:__img("assets/img-1.webp"),alt:"AI voice technology for retail stores",desc:"A shopper calls about stock and hours. SoniVoice answers product and order-status questions, and captures a callback lead when it can't close the loop.",chat:[["ai","SoniVoice AI","Thanks for calling UrbanNest! How can I help you today?"],["user","Caller","Do you have the oak bookshelf in stock? And what time do you close?"],["ai","SoniVoice AI","We close at 9pm tonight. Good news — we have three oak bookshelves in stock downtown. Want me to hold one for pickup?"],["user","Caller","Yes please, name's Daniel."],["ai","SoniVoice AI","Done, Daniel — one oak bookshelf on hold till tomorrow 6pm. I texted your confirmation and sent the store your details."]]},
+salon:{badge:"EXAMPLE • SALON & SPA",title:"Books the chair, notes the preference.",img:__img("assets/img-1.webp"),alt:"AI voice technology for salons and spas",desc:"A client calls to book. SoniVoice books the service, notes stylist preference, and sends reminders and confirmations.",chat:[["ai","SoniVoice AI","Thanks for calling Glow Studio! I can book your appointment right now. Which service are you looking for?"],["user","Caller","A haircut and color, preferably with Ava."],["ai","SoniVoice AI","Ava has Thursday 2pm or Friday 11am open. Which suits you?"],["user","Caller","Thursday 2pm. Name's Sofia."],["ai","SoniVoice AI","Booked, Sofia — cut and color with Ava, Thursday 2pm. I texted your confirmation and sent the studio your booking."]]},
+realestate:{badge:"EXAMPLE • REAL ESTATE",title:"Captures the lead, books the showing.",img:__img("assets/img-1.webp"),alt:"AI voice technology for real estate",desc:"A buyer calls about a listing after hours. SoniVoice captures the property of interest and the showing request — twenty-four seven.",chat:[["ai","SoniVoice AI","Thanks for calling Evergreen Realty! Are you calling about buying, selling, or a specific listing?"],["user","Caller","The Maple Street townhouse. Is it still available?"],["ai","SoniVoice AI","It is — listed at four twenty-five. Can I get your name and number? I'll set up a showing and have an agent confirm."],["user","Caller","Chris, and mornings work best."],["ai","SoniVoice AI","Thanks Chris — your showing request is with the team, and they'll call tomorrow morning to confirm."]]},
+pro:{badge:"EXAMPLE • PROFESSIONAL SERVICES",title:"Qualifies the inquiry, books the consult.",img:__img("assets/img-1.webp"),alt:"AI voice technology for professional services",desc:"A potential client calls the firm. SoniVoice qualifies the matter, captures urgency, and books a consultation.",chat:[["ai","SoniVoice AI","Thanks for calling Hartley and Associates! I can get you scheduled. What is this regarding?"],["user","Caller","I need help reviewing a vendor contract, fairly urgent."],["ai","SoniVoice AI","Understood — contract review, urgent. Can I take your name and best callback number?"],["user","Caller","Amara. This week if possible."],["ai","SoniVoice AI","Thanks Amara — I've flagged this as urgent and sent your details to the team. They'll call you back today with consult times."]]},
+
 };
 var industries=[
 {id:"restaurant",icon:"🍽️",name:"Restaurants & Cafés",ex:"Takes takeout orders by name, confirms items + pickup time, sends order to you."},
@@ -266,7 +271,25 @@ function playDemo(){
   clearTimeout(timer); setRing(0); document.getElementById('chat').innerHTML='<div class="msg ai"><small>Calling…</small>Dialing the business number…</div>';
   var steps=[400,1100,1800,2500]; steps.forEach(function(t,i){timer=setTimeout(function(){setRing(i); if(i===3){renderChat(current)}},t);});
 }
+
+function replayCallAudio(){
+  if(!('speechSynthesis' in window)){return;}
+  speechSynthesis.cancel();
+  var s=scenarios[current]||scenarios.restaurant;
+  var vs=speechSynthesis.getVoices(),v=null;
+  var prefs=[/google us english/i,/samantha/i,/zira/i,/aria/i,/jenny/i,/female/i];
+  for(var i=0;i<prefs.length&&!v;i++){for(var j=0;j<vs.length;j++){var lg=vs[j].lang||'';if(/^en/i.test(lg)&&prefs[i].test(vs[j].name||'')){v=vs[j];break;}}}
+  if(!v){for(var k=0;k<vs.length;k++){if(/^en/i.test(vs[k].lang||'')){v=vs[k];break;}}}
+  s.chat.forEach(function(m){
+    var u=new SpeechSynthesisUtterance(m[2]);
+    if(v){u.voice=v;}
+    if(m[0]==='ai'){u.pitch=1.15;u.rate=1.03;}else{u.pitch=0.85;u.rate=0.97;}
+    speechSynthesis.speak(u);
+  });
+}
+if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=function(){};}
 function selectScenario(key,el){
+  if('speechSynthesis' in window){try{speechSynthesis.cancel();}catch(e){}}
   current=key;
   document.querySelectorAll('#scenarioBtns .chip').forEach(function(c){c.classList.remove('active')});
   if(el) el.classList.add('active');
@@ -297,7 +320,7 @@ function calc(){
 document.getElementById('missed').addEventListener('input',calc);
 document.getElementById('jobvalue').addEventListener('input',calc);
 document.querySelectorAll('.faq-item button').forEach(function(b){b.onclick=function(){b.parentElement.classList.toggle('open'); b.querySelector('span').textContent=b.parentElement.classList.contains('open')?'−':'+';};});
-selectScenario('restaurant',document.querySelector('#scenarioBtns .chip')); calc();
+document.getElementById('heroImg').src=__img('assets/img-1.webp');selectScenario('restaurant',document.querySelector('#scenarioBtns .chip')); calc();
 </script>
 </body>
 </html>
