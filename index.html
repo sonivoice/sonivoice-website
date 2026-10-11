@@ -19,7 +19,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 82%, transparent);border-bottom:1px solid var(--line)}
 .topbar-in{display:flex;justify-content:space-between;align-items:center;height:64px}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Sora';font-weight:800;font-size:22px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-family:'Sora';font-weight:800;font-size:22px}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#00D9EC,#0077FF);display:grid;place-items:center;color:#fff;font-size:18px}
 .logo span{color:var(--cyan2)}
 .nav{display:flex;gap:22px;font-weight:700;font-size:14px}
@@ -110,8 +110,8 @@ input[type=range]{width:100%}
 </style>
 </head>
 <body>
-<header class="topbar"><div class="wrap topbar-in">
-<div class="logo"><div class="logo-mark">◉</div>Soni<span>Voice</span></div>
+<header class="topbar" id="top"><div class="wrap topbar-in">
+<a class="logo" href="#top"><div class="logo-mark">◉</div>Soni<span>Voice</span></a>
 <nav class="nav"><a href="#how">How it works</a><a href="#industries">Who it's for</a><a href="#inbox">What you get</a><a href="#calculator">Calculator</a><a href="#faq">FAQ</a></nav>
 <a class="btn btn-primary" href="#cta">Start Pilot →</a>
 </div></header>
