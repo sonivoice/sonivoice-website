@@ -65,21 +65,8 @@ function replayCallAudio(){
   });
 }
 if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=function(){};}
-function selectScenario(key,el){
-  stopCallAudio();
-  current=key;
-  document.querySelectorAll('#scenarioBtns .chip').forEach(function(c){c.classList.remove('active')});
-  if(el) el.classList.add('active');
-  var s=scenarios[key];
-  document.getElementById('demoBadge').textContent=s.badge;
-  document.getElementById('demoTitle').textContent=s.title;
-  document.getElementById('demoDesc').textContent=s.desc;
-  document.getElementById('demoImg').src=s.img; document.getElementById('demoImg').alt=s.alt;
-  document.getElementById('demoConvo').innerHTML=s.chat.map(function(m){return '<div><b style="color:'+(m[0]==='ai'?'#00D9EC':'#fff')+'">'+m[1]+':</b> '+m[2]+'</div>'}).join('');
-  document.querySelectorAll('.ind').forEach(function(c){c.classList.toggle('active',c.dataset.id===key)});
-  playDemo();
-}
-var _sb=document.getElementById('scenarioBtns');if(_sb){_sb.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b) selectScenario(b.dataset.s,b);});}
+function setT(id,t){var e=document.getElementById(id);if(e)e.textContent=t;}
+function selectScenario(key,el){   stopCallAudio();   current=key;   var sb=document.getElementById('scenarioBtns');   if(sb){sb.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active')});}   if(el) el.classList.add('active');   var s=scenarios[key]||scenarios.restaurant;   setT('demoBadge',s.badge); setT('demoTitle',s.title); setT('demoDesc',s.desc);   var di=document.getElementById('demoImg'); if(di){di.src=s.img;di.alt=s.alt;}   var dc=document.getElementById('demoConvo'); if(dc){dc.innerHTML=s.chat.map(function(m){return '<div><b style="color:'+(m[0]==='ai'?'#00D9EC':'#fff')+'">'+m[1]+':</b> '+m[2]+'</div>'}).join('');}   document.querySelectorAll('.ind').forEach(function(c){c.classList.toggle('active',c.dataset.id===key)});   if(document.getElementById('chat')){playDemo();} } var _sb=document.getElementById('scenarioBtns');if(_sb){_sb.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b) selectScenario(b.dataset.s,b);});}
 var grid=document.getElementById('indGrid');
 if(grid){
 industries.forEach(function(it){

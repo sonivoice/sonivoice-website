@@ -8,7 +8,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 82%, transparent);border-bottom:1px solid var(--line)}
 .topbar-in{display:flex;justify-content:space-between;align-items:center;height:64px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}.logo-img{height:34px;width:auto;display:block}font-family:'Sora';font-weight:800;font-size:22px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}.logo-img{height:34px;width:auto;display:block}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#00D9EC,#0077FF);display:grid;place-items:center;color:#fff;font-size:18px}
 .logo span{color:var(--cyan2)}
 .nav{display:flex;gap:22px;font-weight:700;font-size:14px}
@@ -53,7 +53,7 @@ a{color:inherit;text-decoration:none}
 .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-weight:700;font-size:13px;cursor:pointer}
 .chip.active{background:#fff;color:#061224}
 section{padding:64px 0}
-.kicker{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan2)}
+.kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan2);background:rgba(0,217,236,.08);border:1px solid rgba(0,217,236,.28);padding:7px 14px;border-radius:999px}
 .title{font-size:clamp(28px,4vw,44px);margin:10px 0 12px}
 .sub{color:var(--muted);max-width:720px;font-size:17px}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
