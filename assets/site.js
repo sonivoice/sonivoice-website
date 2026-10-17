@@ -219,3 +219,23 @@ document.querySelectorAll('[data-ic]').forEach(function(el){var k=el.getAttribut
     io.observe(el);
   });
 })();
+
+/* pilot application success confirmation */
+(function(){
+  var q=new URLSearchParams(location.search);
+  if(q.get('applied')!=='1')return;
+  var form=document.querySelector('#apply form');
+  if(!form)return;
+  var d=document.createElement('div');
+  d.style.cssText='max-width:520px;margin:22px auto 0;text-align:center;background:rgba(0,217,236,.08);border:1px solid rgba(0,217,236,.3);border-radius:18px;padding:28px 24px';
+  d.innerHTML='<svg width="44" height="44" viewBox="0 0 44 44" fill="none" style="margin-bottom:10px"><circle cx="22" cy="22" r="20" stroke="#00D9EC" stroke-width="3"/><path d="M14 22.5l6 6 10-12" stroke="#00D9EC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>'+
+   '<h3 style="margin:0 0 8px;color:#fff">Application received!</h3>'+
+   '<p style="color:#B9C7DD;margin:0 0 16px">Thanks for applying — we reply within one business day.</p>'+
+   '<div style="text-align:left;color:#B9C7DD;font-size:14px;display:grid;gap:10px;max-width:340px;margin:0 auto">'+
+   '<div><b style="color:#00D9EC">1.</b> We review your application</div>'+
+   '<div><b style="color:#00D9EC">2.</b> We reach out to schedule your setup</div>'+
+   '<div><b style="color:#00D9EC">3.</b> You are live in days — done for you</div>'+
+   '</div>';
+  form.replaceWith(d);
+  try{history.replaceState(null,'',location.pathname+'#apply');}catch(e){}
+})();
