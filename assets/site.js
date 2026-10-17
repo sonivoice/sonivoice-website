@@ -145,3 +145,34 @@ var _hi=document.getElementById('heroImg');if(_hi){_hi.src=__img('assets/img-1.w
     };
   }
 })();
+
+/* mobile nav: build hamburger menu from the desktop nav links */
+(function(){
+  var nav = document.querySelector('.topbar .nav');
+  var bar = document.querySelector('.topbar-in');
+  if(!nav || !bar || bar.querySelector('.menu-btn')) return;
+  var btn = document.createElement('button');
+  btn.className = 'menu-btn';
+  btn.setAttribute('aria-label', 'Menu');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  var mnav = document.createElement('nav');
+  mnav.className = 'mnav';
+  mnav.setAttribute('aria-label', 'Mobile');
+  mnav.innerHTML = nav.innerHTML;
+  bar.appendChild(btn);
+  bar.appendChild(mnav);
+  function close(){
+    mnav.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = mnav.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mnav.addEventListener('click', function(e){ if(e.target.closest('a')) close(); });
+  document.addEventListener('click', function(e){ if(!e.target.closest('.topbar')) close(); });
+})();
