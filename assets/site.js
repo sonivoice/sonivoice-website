@@ -11,15 +11,31 @@ realestate:{badge:"EXAMPLE • REAL ESTATE",title:"Captures the lead, books the 
 pro:{badge:"EXAMPLE • PROFESSIONAL SERVICES",title:"Qualifies the inquiry, books the consult.",img:__img("assets/img-9.webp"),alt:"Modern professional office interior",desc:"A potential client calls the firm. SoniVoice qualifies the matter, captures urgency, and books a consultation.",chat:[["ai","SoniVoice AI","Thanks for calling Hartley and Associates! I can get you scheduled. What is this regarding?"],["user","Caller","I need help reviewing a vendor contract, fairly urgent."],["ai","SoniVoice AI","Understood — contract review, urgent. Can I take your name and best callback number?"],["user","Caller","Amara. This week if possible."],["ai","SoniVoice AI","Thanks Amara — I've flagged this as urgent and sent your details to the team. They'll call you back today with consult times."]]},
 
 };
+function __ic(paths){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths+'</svg>';}
+var ICONS={
+restaurant:__ic('<path d="M4 18h16"/><path d="M6.5 18a5.5 5.5 0 0 1 11 0"/><path d="M12 12.5V10"/><circle cx="12" cy="8.6" r="1" fill="currentColor" stroke="none"/>'),
+auto:__ic('<path d="M4 13l1.6-4.4A2 2 0 0 1 7.5 7.2h9a2 2 0 0 1 1.9 1.4L20 13"/><rect x="3" y="13" width="18" height="4.5" rx="1.5"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/>'),
+home:__ic('<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>'),
+retail:__ic('<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>'),
+clinic:__ic('<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/>'),
+salon:__ic('<circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/>'),
+realestate:__ic('<path d="M3 9.5 12 3l9 6.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22v-8h6v8"/>'),
+pro:__ic('<rect x="2.5" y="7" width="19" height="13.5" rx="2"/><path d="M16 20.5V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v15.5"/>'),
+setup:__ic('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>'),
+phone:__ic('<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>'),
+email:__ic('<rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m21 7.5-9 5.5-9-5.5"/>'),
+mic:__ic('<rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21"/>')
+};
+
 var industries=[
-{id:"restaurant",icon:"🍽️",name:"Restaurants & Cafés",ex:"Takes takeout orders by name, confirms items + pickup time, sends order to you."},
-{id:"auto",icon:"🚗",name:"Automotive Dealers",ex:"Qualifies buyers & service callers: vehicle, budget, trade-in, callback time."},
-{id:"home",icon:"🔧",name:"Home Services",ex:"HVAC, plumbing, electrical: diagnoses the issue, books the visit, texts confirmation."},
-{id:"retail",icon:"🛍️",name:"Retail & E-commerce",ex:"Answers product, hours & order-status questions; captures callback leads."},
-{id:"clinic",icon:"🏥",name:"Healthcare & Clinics",ex:"Collects intake details and books appointments when the front desk is busy."},
-{id:"salon",icon:"💇",name:"Salons & Spas",ex:"Books services, notes stylist preference, sends reminders & confirmations."},
-{id:"realestate",icon:"🏠",name:"Real Estate",ex:"Captures buyer/renter leads, property of interest, and showing requests 24/7."},
-{id:"pro",icon:"💼",name:"Professional Services",ex:"Law, accounting, agencies: qualifies the inquiry and books consultations."}
+{id:"restaurant",icon:"restaurant",name:"Restaurants & Cafés",ex:"Takes takeout orders by name, confirms items + pickup time, sends order to you."},
+{id:"auto",icon:"auto",name:"Automotive Dealers",ex:"Qualifies buyers & service callers: vehicle, budget, trade-in, callback time."},
+{id:"home",icon:"home",name:"Home Services",ex:"HVAC, plumbing, electrical: diagnoses the issue, books the visit, texts confirmation."},
+{id:"retail",icon:"retail",name:"Retail & E-commerce",ex:"Answers product, hours & order-status questions; captures callback leads."},
+{id:"clinic",icon:"clinic",name:"Healthcare & Clinics",ex:"Collects intake details and books appointments when the front desk is busy."},
+{id:"salon",icon:"salon",name:"Salons & Spas",ex:"Books services, notes stylist preference, sends reminders & confirmations."},
+{id:"realestate",icon:"realestate",name:"Real Estate",ex:"Captures buyer/renter leads, property of interest, and showing requests 24/7."},
+{id:"pro",icon:"pro",name:"Professional Services",ex:"Law, accounting, agencies: qualifies the inquiry and books consultations."}
 ];
 var current="restaurant", timer=null;
 function renderChat(key){
@@ -71,7 +87,7 @@ var grid=document.getElementById('indGrid');
 if(grid){
 industries.forEach(function(it){
   var b=document.createElement('button'); b.className='ind'+(it.id==='restaurant'?' active':''); b.dataset.id=it.id;
-  b.innerHTML='<div class="icon">'+it.icon+'</div><h3>'+it.name+'</h3><p>'+it.ex+'</p>';
+  b.innerHTML='<div class="icon">'+ICONS[it.icon]+'</div><h3>'+it.name+'</h3><p>'+it.ex+'</p>';
   b.onclick=function(){var key=scenarios[it.id]?it.id:'home'; var chip=document.querySelector('#scenarioBtns [data-s="'+key+'"]'); selectScenario(key,chip); document.getElementById('demoBox').scrollIntoView({behavior:'smooth',block:'center'});};
   grid.appendChild(b);
 });}
@@ -163,3 +179,6 @@ var _hi=document.getElementById('heroImg');if(_hi){_hi.src=__img('assets/img-1.w
   mnav.addEventListener('click', function(e){ if(e.target.closest('a')) close(); });
   document.addEventListener('click', function(e){ if(!e.target.closest('.topbar')) close(); });
 })();
+
+/* hydrate inline svg icons */
+document.querySelectorAll('[data-ic]').forEach(function(el){var k=el.getAttribute('data-ic'); if(window.ICONS&&ICONS[k]){el.innerHTML=ICONS[k];}});
