@@ -182,3 +182,18 @@ var _hi=document.getElementById('heroImg');if(_hi){_hi.src=__img('assets/img-1.w
 
 /* hydrate inline svg icons */
 document.querySelectorAll('[data-ic]').forEach(function(el){var k=el.getAttribute('data-ic'); if(window.ICONS&&ICONS[k]){el.innerHTML=ICONS[k];}});
+
+/* sticky mobile CTA bar */
+(function(){
+  var bar=document.createElement('div');
+  bar.className='sticky-cta';
+  var home=/(^|\/)index\.html$|\/$/.test(location.pathname);
+  bar.innerHTML='<a class="btn btn-cyan" href="'+(home?'#apply':'index.html#apply')+'">Start Pilot &rarr;</a>';
+  document.body.appendChild(bar);
+  var apply=document.getElementById('apply');
+  if(apply&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      for(var i=0;i<es.length;i++){bar.classList.toggle('hidden',es[i].isIntersecting);}
+    },{threshold:0.12}).observe(apply);
+  }
+})();

@@ -142,3 +142,12 @@ section{padding:52px 0}
 @media(max-width:900px){
 .frow{grid-template-columns:1fr !important}
 }
+
+/* sticky mobile CTA */
+.sticky-cta{display:none}
+@media(max-width:900px){
+.sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);transition:transform .25s ease}
+.sticky-cta.hidden{transform:translateY(110%)}
+.sticky-cta .btn{width:100%;justify-content:center;padding:14px 20px;font-size:16px}
+body{padding-bottom:78px}
+}
