@@ -211,7 +211,7 @@ input[type=range]{width:100%}
 <input type="range" id="jobvalue" min="25" max="1500" value="180" step="5"/>
 <p style="color:var(--muted);font-size:14px">Even if SoniVoice saves only 1 in 3 of those missed calls, look at what's walking out the door today →</p>
 </div>
-<div class="output"><div style="font-size:12px;letter-spacing:.1em;font-weight:800;color:#8EA6C2">EST. RECOVERED / MONTH</div><b id="recovered">$2,880</b><p style="color:#B9CCE6;font-size:14px" id="calcNote">That's ~4 saved customers a week you would have lost to voicemail.</p><a href="#apply" class="btn btn-cyan">Start recovering calls →</a></div>
+<div class="output"><div style="font-size:12px;letter-spacing:.1em;font-weight:800;color:#8EA6C2">EST. RECOVERED / MONTH</div><b id="recovered">$2,880</b><div style="font-size:12px;letter-spacing:.1em;font-weight:800;color:#8EA6C2;margin-top:14px">EST. RECOVERED / YEAR</div><b id="recoveredYear">$34,560</b><p style="color:#B9CCE6;font-size:14px" id="calcNote">That's ~17 saved customers a month you would have lost to voicemail.</p><p style="color:#B9CCE6;font-size:14px" id="calcCalls">SoniVoice would answer ~52 of those calls for you — nights, weekends, holidays included.</p><a href="#apply" class="btn btn-cyan">Start recovering calls →</a></div>
 </div>
 
 <div class="features">
@@ -221,6 +221,16 @@ input[type=range]{width:100%}
 <div class="feature"><h3>Books & confirms</h3><p>Appointments go on your calendar and the customer gets a text confirmation automatically.</p></div>
 <div class="feature"><h3>Every call, recorded</h3><p>Summary + transcript + recording in your email after every single handled call.</p></div>
 <div class="feature"><h3>Done-for-you setup</h3><p>We build it, test it 20+ ways, and launch it on your number. You just read the emails.</p></div>
+</div>
+</div></section>
+
+<section id="minutes" style="padding-top:0"><div class="wrap">
+<div class="kicker">How it adds up</div><h2 class="title">What AI minutes actually buy you.</h2>
+<p style="color:var(--muted);max-width:640px">Forget seat licenses and 15-minute rounding. SoniVoice runs on simple talk time — the same unit the phone company uses.</p>
+<div class="features">
+<div class="feature"><h3>1 minute = 1 real minute</h3><p>When SoniVoice talks to your customer for 3 minutes, that's 3 minutes of AI time. One straightforward unit — nothing bundled, nothing rounded up.</p></div>
+<div class="feature"><h3>&asymp; 30 calls per 100 minutes</h3><p>Most front-desk calls run about 3 minutes. So 100 minutes of AI time covers 30+ real calls — orders taken, appointments booked, details captured.</p></div>
+<div class="feature"><h3>2 AM costs the same as 2 PM</h3><p>Nights, weekends, holidays — every minute works the same. No overtime, no holiday pay, no &ldquo;sorry, we&rsquo;re closed.&rdquo;</p></div>
 </div>
 </div></section>
 
@@ -279,6 +289,15 @@ input[type=range]{width:100%}
 <span style="background:#fff;border:1px solid #E5ECF5;border-radius:12px;padding:8px 14px"><b>Week 3+</b> — you decide</span>
 </div>
 <div style="margin-top:16px"><a href="#apply" class="btn btn-cyan">Claim a founding spot →</a></div>
+</div>
+</div></section>
+
+<section id="trust" style="padding-top:0"><div class="wrap">
+<div class="kicker">Trust</div><h2 class="title">Your calls. Your customers. Your data.</h2>
+<div class="features">
+<div class="feature"><h3>Every call, on record</h3><p>Summary, transcript, and recording after every handled call. Review anything, anytime — it&rsquo;s your record of what happened.</p></div>
+<div class="feature"><h3>Emailed to you — nobody else</h3><p>Call summaries go straight to your inbox. Your customer data is never sold and never shared with other businesses. Period.</p></div>
+<div class="feature"><h3>You set the rules</h3><p>What it says, what it asks, when it transfers to you. Built around your business on day one — adjustable anytime after.</p></div>
 </div>
 </div></section>
 
@@ -413,7 +432,9 @@ function calc(){
   document.getElementById('missedVal').textContent=m; document.getElementById('valueVal').textContent=v;
   var saved=Math.round(m*4.33/3); var total=saved*v;
   document.getElementById('recovered').textContent='$'+total.toLocaleString();
+  document.getElementById('recoveredYear').textContent='$'+(total*12).toLocaleString();
   document.getElementById('calcNote').textContent="That's ~"+saved+" saved customers a month you would have lost to voicemail.";
+  document.getElementById('calcCalls').textContent="SoniVoice would answer ~"+Math.round(m*4.33)+" of those calls for you — nights, weekends, holidays included.";
 }
 document.getElementById('missed').addEventListener('input',calc);
 document.getElementById('jobvalue').addEventListener('input',calc);
