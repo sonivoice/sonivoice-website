@@ -138,3 +138,7 @@ section{padding:52px 0}
 .btn-primary:hover{background:#fff}
 .step-num{background:#EAF2FB;color:#061224}
 }
+
+@media(max-width:900px){
+.frow{grid-template-columns:1fr !important}
+}
