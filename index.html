@@ -118,6 +118,7 @@ input[type=range]{width:100%}
 @media(max-width:540px){.steps,.industries{grid-template-columns:1fr}.hero-in{padding-top:44px}}
 @media(prefers-reduced-motion:reduce){.wave span{animation:none}}
 </style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="f8ac7274-cbc9-4e1a-92d3-32038831d38e"></script>
 </head>
 <body>
 <header class="topbar" id="top"><div class="wrap topbar-in">
@@ -418,6 +419,51 @@ document.getElementById('missed').addEventListener('input',calc);
 document.getElementById('jobvalue').addEventListener('input',calc);
 document.querySelectorAll('.faq-item button').forEach(function(b){b.onclick=function(){b.parentElement.classList.toggle('open'); b.querySelector('span').textContent=b.parentElement.classList.contains('open')?'−':'+';};});
 document.getElementById('heroImg').src=__img('assets/img-1.webp');selectScenario('restaurant',document.querySelector('#scenarioBtns .chip')); calc();
+</script>
+
+<script>
+/* SoniVoice analytics events (Umami) — safe no-op if Umami hasn't loaded */
+(function(){
+  function svTrack(name, data){
+    try{ if(window.umami && umami.track){ umami.track(name, data||{}); } }catch(e){}
+  }
+  // Pilot application form submissions — the money metric
+  document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function(f){
+    f.addEventListener('submit', function(){ svTrack('pilot-application'); });
+  });
+  // Industry scenario tab clicks
+  var scenarioBtns = document.getElementById('scenarioBtns');
+  if(scenarioBtns){
+    scenarioBtns.addEventListener('click', function(e){
+      var b = e.target.closest('.chip');
+      if(b){ svTrack('industry-tab', { industry: b.dataset.s }); }
+    });
+  }
+  // Industry grid card clicks
+  var indGrid = document.getElementById('indGrid');
+  if(indGrid){
+    indGrid.addEventListener('click', function(e){
+      var b = e.target.closest('.ind');
+      if(b){ svTrack('industry-card', { industry: b.dataset.id }); }
+    });
+  }
+  // "Listen to this call" audio plays
+  if(typeof window.replayCallAudio === 'function'){
+    var _replay = window.replayCallAudio;
+    window.replayCallAudio = function(){
+      svTrack('call-audio-play', { industry: window.current || 'restaurant' });
+      return _replay.apply(this, arguments);
+    };
+  }
+  // Hero call-simulation replay clicks
+  if(typeof window.playDemo === 'function'){
+    var _play = window.playDemo;
+    window.playDemo = function(){
+      svTrack('hero-replay');
+      return _play.apply(this, arguments);
+    };
+  }
+})();
 </script>
 </body>
 </html>
