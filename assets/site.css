@@ -151,3 +151,17 @@ section{padding:52px 0}
 .sticky-cta .btn{width:100%;justify-content:center;padding:14px 20px;font-size:16px}
 body{padding-bottom:78px}
 }
+
+/* motion: reveals + hovers */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+.lift{transition:transform .22s ease,box-shadow .22s ease}
+.lift:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(2,12,27,.14)}
+.ind,.feature,.step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.ind:hover,.feature:hover,.step:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(2,12,27,.14);border-color:var(--cyan)}
+.btn{transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-cyan:hover{box-shadow:0 10px 26px rgba(0,217,236,.42)}
+.chip{transition:border-color .18s ease,background-color .18s ease,transform .18s ease}
+.chip:hover{border-color:var(--cyan);transform:translateY(-1px)}

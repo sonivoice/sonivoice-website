@@ -197,3 +197,25 @@ document.querySelectorAll('[data-ic]').forEach(function(el){var k=el.getAttribut
     },{threshold:0.12}).observe(apply);
   }
 })();
+
+/* motion: scroll reveals + card hovers */
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.kicker,.badge,.title,section h2,.ind,.feature,.step,.faq-item,.stat,.email-card');
+  var grids=document.querySelectorAll('#compare .wrap > div[style*="display:grid"], #pilot .wrap > div[style*="display:grid"]');
+  var all=Array.prototype.slice.call(els);
+  Array.prototype.forEach.call(grids,function(g){Array.prototype.forEach.call(g.children,function(c){c.classList.add('lift');all.push(c);});});
+  if(reduce||!('IntersectionObserver' in window)){return;}
+  all.forEach(function(el){el.classList.add('rv');});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -6% 0px'});
+  all.forEach(function(el){
+    var sibs=Array.prototype.filter.call(el.parentElement.children,function(c){return c.classList.contains('rv');});
+    var idx=sibs.indexOf(el);
+    if(idx>0){el.style.transitionDelay=Math.min(idx*70,420)+'ms';}
+    io.observe(el);
+  });
+})();
