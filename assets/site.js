@@ -103,7 +103,7 @@ function calc(){
 var _m=document.getElementById('missed');if(_m){_m.addEventListener('input',calc);}
 var _jv=document.getElementById('jobvalue');if(_jv){_jv.addEventListener('input',calc);}
 document.querySelectorAll('.faq-item button').forEach(function(b){b.onclick=function(){b.parentElement.classList.toggle('open'); b.querySelector('span').textContent=b.parentElement.classList.contains('open')?'−':'+';};});
-var _hi=document.getElementById('heroImg');if(_hi){_hi.src=__img('assets/img-1.webp');}var _sc=document.querySelector('#scenarioBtns .chip');if(_sc){selectScenario('restaurant',_sc);}if(document.getElementById('missed')){calc();}
+var _hi=document.getElementById('heroImg');if(_hi){_hi.src=__img('assets/img-1.webp');}var _sc=document.querySelector('#scenarioBtns .chip');if(_sc){selectScenario('restaurant',_sc);renderChat('restaurant');setRing(4);}if(document.getElementById('missed')){calc();}
 
 
 /* SoniVoice analytics events (Umami) — safe no-op if Umami hasn't loaded */
