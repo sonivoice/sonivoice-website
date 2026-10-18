@@ -45,9 +45,30 @@ function renderChat(key){
 function setRing(step){
   ["r1","r2","r3","rAI"].forEach(function(id,i){var el=document.getElementById(id); el.className="ring"+(i<step?" done":i===step?" active":"");});
 }
+var _ac=null;
+function playRing(){
+  try{
+    _ac=_ac||new (window.AudioContext||window.webkitAudioContext)();
+    if(_ac.state==='suspended'){_ac.resume();}
+    var t=_ac.currentTime;
+    [440,480].forEach(function(f){
+      var o=_ac.createOscillator(),g=_ac.createGain();
+      o.frequency.value=f; o.type='sine';
+      g.gain.setValueAtTime(0.0001,t);
+      g.gain.exponentialRampToValueAtTime(0.22,t+0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+0.38);
+      o.connect(g); g.connect(_ac.destination);
+      o.start(t); o.stop(t+0.42);
+    });
+  }catch(e){}
+}
 function playDemo(){
-  clearTimeout(timer); setRing(0); document.getElementById('chat').innerHTML='<div class="msg ai"><small>Calling…</small>Dialing the business number…</div>';
-  var steps=[400,1100,1800,2500]; steps.forEach(function(t,i){timer=setTimeout(function(){setRing(i); if(i===3){renderChat(current)}},t);});
+  clearTimeout(timer); stopCallAudio(); setRing(0); document.getElementById('chat').innerHTML='<div class="msg ai"><small>Calling…</small>Dialing the business number…</div>';
+  var steps=[400,1100,1800,2500]; steps.forEach(function(t,i){timer=setTimeout(function(){setRing(i); playRing(); if(i===3){renderChat(current)}},t);});
+}
+function playDemoWithAudio(){
+  playDemo();
+  setTimeout(function(){replayCallAudio();},2600);
 }
 
 var callAudio=null;
